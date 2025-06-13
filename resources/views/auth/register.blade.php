@@ -1,52 +1,106 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+    <div style="max-width: 500px; margin: 0 auto; padding: 2rem; border: 3px solid black; box-shadow: 6px 6px 0px 0px black; background: white;">
+        <h2 style="text-transform: uppercase; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 2rem; text-align: center;">REGISTER</h2>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+            <!-- Name -->
+            <div style="margin-bottom: 1.5rem;">
+                <label for="name" style="display: block; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">NAME</label>
+                <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"
+                       style="width: 100%; padding: 0.75rem; border: 2px solid black; font-weight: 600;">
+                @error('name')
+                    <div style="color: #ff4757; font-weight: 600; margin-top: 0.5rem; padding: 0.5rem; background: #ffecec; border: 2px solid black;">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <!-- Email Address -->
+            <div style="margin-bottom: 1.5rem;">
+                <label for="email" style="display: block; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">EMAIL</label>
+                <input id="email" type="email" name="email" :value="old('email')" required autocomplete="username"
+                       style="width: 100%; padding: 0.75rem; border: 2px solid black; font-weight: 600;">
+                @error('email')
+                    <div style="color: #ff4757; font-weight: 600; margin-top: 0.5rem; padding: 0.5rem; background: #ffecec; border: 2px solid black;">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+            <!-- Password -->
+            <div style="margin-bottom: 1.5rem;">
+                <label for="password" style="display: block; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">PASSWORD</label>
+                <input id="password" type="password" name="password" required autocomplete="new-password"
+                       style="width: 100%; padding: 0.75rem; border: 2px solid black; font-weight: 600;">
+                @error('password')
+                    <div style="color: #ff4757; font-weight: 600; margin-top: 0.5rem; padding: 0.5rem; background: #ffecec; border: 2px solid black;">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <!-- Confirm Password -->
+            <div style="margin-bottom: 2rem;">
+                <label for="password_confirmation" style="display: block; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">CONFIRM PASSWORD</label>
+                <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
+                       style="width: 100%; padding: 0.75rem; border: 2px solid black; font-weight: 600;">
+                @error('password_confirmation')
+                    <div style="color: #ff4757; font-weight: 600; margin-top: 0.5rem; padding: 0.5rem; background: #ffecec; border: 2px solid black;">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="{{ route('login') }}" style="font-weight: 600; text-decoration: underline; color: black;">
+                    ALREADY REGISTERED?
+                </a>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                <button type="submit" style="
+                    background-color: #000000;
+                    color: white;
+                    padding: 0.75rem 1.5rem;
+                    border: 2px solid black;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    box-shadow: 3px 3px 0px 0px black;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                ">
+                    REGISTER
+                </button>
+            </div>
+        </form>
+    </div>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
+    <style>
+        button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px black !important;
+        }
+        
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px #fffa65;
+        }
+        
+        @media (max-width: 600px) {
+            div[style*="max-width: 500px"] {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+            
+            div[style*="display: flex; justify-content: space-between"] {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            a[style*="font-weight: 600"] {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 </x-guest-layout>
