@@ -3,7 +3,7 @@
 @section('title', 'BUAT BERITA BARU')
 
 @section('content')
-<div class="card mb-5">
+<div class="card mb-8">
     <div class="card-header bg-primary text-white">
         <h3 class="mb-0">BUAT BERITA BARU</h3>
     </div>
@@ -17,6 +17,16 @@
                        id="judul" name="judul" value="{{ old('judul') }}" required
                        style="border: 2px solid black; padding: 0.75rem;">
                 @error('judul')
+                    <div class="invalid-feedback fw-bold">{{ $message }}</div>
+                @enderror
+            </div>
+                
+            <div class="mb-4">
+                <label for="gambar" class="form-label fw-bold">GAMBAR</label>
+                <input type="file" class="form-control @error('gambar') is-invalid @enderror" 
+                       id="gambar" name="gambar" required
+                       style="border: 2px solid black; padding: 0.75rem;">
+                @error('gambar')
                     <div class="invalid-feedback fw-bold">{{ $message }}</div>
                 @enderror
             </div>
@@ -40,17 +50,7 @@
                     <div class="invalid-feedback fw-bold">{{ $message }}</div>
                 @enderror
             </div>
-            
-            <div class="mb-4">
-                <label for="gambar" class="form-label fw-bold">GAMBAR</label>
-                <input type="file" class="form-control @error('gambar') is-invalid @enderror" 
-                       id="gambar" name="gambar"
-                       style="border: 2px solid black; padding: 0.75rem;">
-                @error('gambar')
-                    <div class="invalid-feedback fw-bold">{{ $message }}</div>
-                @enderror
-            </div>
-            
+
             <div class="d-flex gap-3">
                 <button type="submit" class="btn btn-primary px-4 py-2 fw-bold">
                     <i class="bi bi-save me-2"></i> SIMPAN BERITA

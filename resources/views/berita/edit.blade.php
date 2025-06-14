@@ -31,7 +31,7 @@
                     </div>
                 @endif
                 <input type="file" class="form-control @error('gambar') is-invalid @enderror" 
-                       id="gambar" name="gambar" style="border: 2px solid black; padding: 0.75rem;">
+                       id="gambar" name="gambar" style="border: 2px solid black; padding: 0.75rem;" required>
                 @error('gambar')
                     <div class="invalid-feedback fw-bold">{{ $message }}</div>
                 @enderror

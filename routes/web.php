@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
@@ -11,7 +12,7 @@ use App\Models\Article;
 // =======================
 
 // Halaman utama
-Route::get('/', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('auth.login');
 
 // Halaman berita
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');

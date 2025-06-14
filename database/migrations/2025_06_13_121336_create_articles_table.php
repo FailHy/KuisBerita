@@ -16,7 +16,7 @@ return new class extends Migration
         $table->string('judul'); // NOT NULL by default
         $table->text('isi');     // NOT NULL by default
         $table->string('penulis'); // NOT NULL by default
-        $table->string('gambar')->nullable();
+        $table->string('gambar');
         $table->foreignId('user_id')->constrained()->onDelete('cascade');
         $table->timestamps();
         });
